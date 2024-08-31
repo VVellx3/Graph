@@ -3,7 +3,9 @@
 
 struct Node {
   int value;
+
   Node* next = nullptr;
+  Node* prev = nullptr;
 
   Node(int val) : value(val) {}
 };
@@ -17,6 +19,7 @@ struct Graph {
 
   void leash(Node* val1, Node* val2) {
     nodes[val1]->next = val2;
+    nodes[val2]->prev = val1;
   }
 
   Node* operator[](Node* val) {

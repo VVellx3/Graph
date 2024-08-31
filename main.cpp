@@ -1,5 +1,5 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 
 struct Node {
   int value;
@@ -9,13 +9,13 @@ struct Node {
 };
 
 struct Graph {
-  std::map<Node*, Node*> nodes;
+  std::unordered_map<Node*, Node*> nodes;
 
   void push(Node* val) {
     nodes[val] = val;
   }
 
-  void connect(Node* val1, Node* val2) {
+  void leash(Node* val1, Node* val2) {
     nodes[val1]->next = val2;
   }
 
@@ -39,14 +39,14 @@ int main() {
   gr[node2]->value; // output: 2
   gr[node3]->value; // output: 3
   
-  gr.connect(node1, node3);
-  gr.connect(node2, node1);
-  gr.connect(node3, node2);
+  gr.leash(node1, node3);
+  gr.leash(node2, node1);
+  gr.leash(node3, node2);
   
   gr[node1]->next->value; //output: 3
   gr[node1]->next->next->next->value; //output: 1
   
-  gr.connect(node3, node1); // not error, just update
+  gr.leash(node3, node1); // not error, just update
   gr[node3]->next->value; // output: 1
 
   delete node1;

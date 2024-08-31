@@ -1,5 +1,5 @@
 #include <iostream>
-#include <unordered_map>
+#include <map>
 
 struct Node {
   int value;
@@ -9,7 +9,7 @@ struct Node {
 };
 
 struct Graph {
-  std::unordered_map<Node*, Node*> nodes;
+  std::map<Node*, Node*> nodes;
 
   void push(Node* val) {
     nodes[val] = val;

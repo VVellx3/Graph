@@ -9,7 +9,7 @@ struct Node {
 };
 
 struct Graph {
-  std::unordered_map<Node*, Node*> nodes;
+  std::map<Node*, Node*> nodes;
 
   void push(Node* val) {
     nodes[val] = val;
